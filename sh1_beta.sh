@@ -21,7 +21,7 @@ if [[ "$(uname)" == "Darwin" ]]; then
 	-DGEANT4_INSTALL_DATA_TIMEOUT=3000 \
   -DGEANT4_USE_QT_QT6=ON \
 	-DGEANT4_USE_QT=ON \
-	-DCMAKE_INSTALL_PREFIX=/Users/chenxu/software/Geant4/g4/install \
+	-DCMAKE_INSTALL_PREFIX=${HOME}/software/Geant4/g4/install \
 	-DGEANT4_ENABLE_TESTING=ON \
 	-DGEANT4_BUILD_TESTS=ON
   "
@@ -33,7 +33,7 @@ else
 	-DGEANT4_INSTALL_DATA_TIMEOUT=3000 \
   -DGEANT4_USE_QT_QT6=OFF \
 	-DGEANT4_USE_QT=OFF \
-	-DCMAKE_INSTALL_PREFIX=/Users/chenxu/software/Geant4/g4/install \
+	-DCMAKE_INSTALL_PREFIX=${HOME}/software/Geant4/install \
 	-DGEANT4_ENABLE_TESTING=OFF \
 	-DGEANT4_BUILD_TESTS=OFF \
   -GNinja \
@@ -41,7 +41,7 @@ else
 fi
 
 cmake \
-	-DCMAKE_INSTALL_PREFIX=${HOME}/software/Geant4/install/   ../geant4-v11.3.0  \
+  ../geant4-v11.3.0  \
 	-DCMAKE_BUILD_TYPE=Release \
 	-DBUILD_SHARED_LIBS=ON \
 	-DBUILD_STATIC_LIBS=OFF \
