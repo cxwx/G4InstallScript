@@ -1,19 +1,8 @@
-# *************************************************************************** #
-#                                                                             #
-#                                                        :::      ::::::::    #
-#    sh1_install.sh                                    :+:      :+:    :+:    #
-#                                                    +:+ +:+         +:+      #
-#    By: chenxu <chenxu@mail.ustc.edu.cn>          +#+  +:+       +#+         #
-#                                                +#+#+#+#+#+   +#+            #
-#    Created: 2012/01/27 00:07:34 by chenxu           #+#    #+#              #
-#    Updated: 2025/05/02 11:48:22 by chenxu          ###   ########.fr        #
-#                                                                             #
-# *************************************************************************** #
-
 # shellcheck disable=SC2034,SC3010
 # DONE: datadir
 # DONE: openinventer, coin3d need cmake3.5
-# TODO: coin3d -> cmake4
+# FAIL: coin3d -> cmake4
+# -DGEANT4_USE_QT_QT6=ON  not need after g4>11.4
 
 if [[ "$(uname)" == "Darwin" ]]; then
   CMAKE_PARAMS="
@@ -22,7 +11,6 @@ if [[ "$(uname)" == "Darwin" ]]; then
 	-DBUILD_STATIC_LIBS=OFF \
 	-DGEANT4_INSTALL_DATA=ON \
 	-DGEANT4_INSTALL_DATA_TIMEOUT=3000 \
-  -DGEANT4_USE_QT_QT6=ON \
 	-DGEANT4_USE_QT=ON \
 	-DCMAKE_INSTALL_PREFIX=${HOME}/software/Geant4/g4/install \
 	-DGEANT4_ENABLE_TESTING=ON \
@@ -35,7 +23,6 @@ if [[ "$(uname)" == "Darwin" ]]; then
   -DGEANT4_USE_XM=ON \
 	-DGEANT4_INSTALL_DATADIR=${HOME}/software/Geant4/g4/data \
   -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
-  -DGEANT4_USE_INVENTOR_QT=ON \
   "
 else
   CMAKE_PARAMS="
@@ -43,7 +30,6 @@ else
 	-DBUILD_STATIC_LIBS=ON \
 	-DGEANT4_INSTALL_DATA=ON \
 	-DGEANT4_INSTALL_DATA_TIMEOUT=3000 \
-  -DGEANT4_USE_QT_QT6=OFF \
 	-DGEANT4_USE_QT=OFF \
 	-DCMAKE_INSTALL_PREFIX=${HOME}/software/Geant4/install \
 	-DGEANT4_ENABLE_TESTING=OFF \
@@ -54,12 +40,11 @@ fi
 ANEWPATH=$(xcrun --sdk macosx --show-sdk-path)
 
 cmake \
-  ../geant4-v11.3.2 \
+  ../geant4-v11.4.1 \
   -DCMAKE_OSX_SYSROOT=${ANEWPATH} \
   -DCMAKE_BUILD_TYPE=Release \
   -DGEANT4_INSTALL_DATA=ON \
   -DGEANT4_INSTALL_DATA_TIMEOUT=3000 \
-  -DGEANT4_USE_QT_QT6=ON \
   -DGEANT4_USE_QT=ON \
   -DCMAKE_INSTALL_PREFIX=/Users/chenxu/software/Geant4/g4/install \
   -DGEANT4_USE_FREETYPE=ON \
