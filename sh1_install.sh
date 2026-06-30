@@ -40,13 +40,13 @@ fi
 ANEWPATH=$(xcrun --sdk macosx --show-sdk-path)
 
 cmake \
-  ../geant4-v11.4.1 \
+  ../geant4-11.4.2 \
   -DCMAKE_OSX_SYSROOT=${ANEWPATH} \
   -DCMAKE_BUILD_TYPE=Release \
   -DGEANT4_INSTALL_DATA=ON \
   -DGEANT4_INSTALL_DATA_TIMEOUT=3000 \
   -DGEANT4_USE_QT=ON \
-  -DCMAKE_INSTALL_PREFIX=/Users/chenxu/software/Geant4/g4/install \
+  -DCMAKE_INSTALL_PREFIX=${HOME}/software/Geant4/g4/install \
   -DGEANT4_USE_FREETYPE=ON \
   -DGEANT4_BUILD_TLS_MODEL=global-dynamic \
   -DGEANT4_USE_GDML=ON \
